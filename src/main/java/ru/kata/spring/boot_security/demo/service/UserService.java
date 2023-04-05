@@ -46,7 +46,7 @@ public class UserService implements UserDetailsService {
         ouser.setName(user.getName());
         ouser.setLastName(user.getLastName());
         ouser.setUsername(user.getUsername());
-      //  ouser.setAuthorities((Collection<Role>) user.getAuthorities());
+        ouser.setRoles((Collection<Role>) user.getAuthorities());
         userRepository.save(ouser);
     }
 

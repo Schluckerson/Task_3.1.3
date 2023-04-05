@@ -12,10 +12,10 @@
   <input type="text" th:field="*{lastName}" id="lastName">
   <label for="email">Enter email: </label>
   <input type="text" th:field="*{username}" id="email">
-<!--  <label th:field="*{roles}"><input th:each="role : ${allRoles}"  type="checkbox" th:text="${role.getAuthority()}" th:checked="${#lists.contains(user.getAuthorities(), role)}"></label>-->
+<!--  <label th:field="*{roles}"><input th:each="role : ${allRoles}"  type="checkbox" th:value="${role.getId()}" th:text="${role.getAuthority()}" th:checked="${#lists.contains(user.getAuthorities(), role)}"></label>-->
   <label>
     <select multiple="multiple" th:value="*{roles}" name="roles">
-      <option th:each="role : ${allRoles}" th:selected="${#lists.contains(user.roles, role)}" th:value="${role}" th:text="${role.getAuthority()}"></option>
+      <option th:each="role : ${allRoles}" th:selected="${#lists.contains(user.roles, role)}" th:value="${role.getId()}" th:text="${role.getAuthority()}"></option>
     </select>
   </label>
   <input type="submit" value="update">
