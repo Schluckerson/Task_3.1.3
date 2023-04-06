@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
   <title>Spring Security Example</title>
   <!-- Required meta tags -->
@@ -11,9 +11,25 @@
 </head>
 <body>
   <header>
-    <a href="/logout">Logout</a>
+    <div class="container-fluid bg-dark pt-3 pb-3">
+      <div class="row">
+        <div class="col-11">
+          <div class="text-white" sec:authorize="isAuthenticated()">
+            <div class="d-inline h5 font-weight-bold" sec:authentication="name"></div>
+            <h5 class="d-inline">with roles:</h5>
+          <div class="d-inline" th:each="authority : ${#authentication.getAuthorities()}"
+               th:if="${authority.getAuthority().startsWith('ROLE_')}"
+               th:text="${authority.getAuthority().replaceFirst('ROLE_', '')} "></div>
+          </div>
+        </div>
+        <div class="col">
+          <a class="float-right text-white-50 sec:authorize=" sec:authorize="isAuthenticated()"  href="/logout">Logout</a>
+          <a class="float-right text-white-50 sec:authorize=" sec:authorize="!isAuthenticated()" href="/login">Login</a>
+        </div>
+      </div>
+    </div>
   </header>
-  <div layout:fragment="content">
+  <div class="bg-light" layout:fragment="content">
     <p>Body contents</p>
   </div>
 
