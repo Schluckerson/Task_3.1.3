@@ -21,13 +21,14 @@ public class UserController {
 
     @GetMapping("/")
     public String index() {
-
         return "index";
     }
 
     @GetMapping("/user")
     public String userInfo(Principal principal, Model model) {
         model.addAttribute("user", userService.findByUsername(principal.getName()));
+        model.addAttribute("adminPage", false);
+        model.addAttribute("userPage", true);
         return "user";
     }
 
