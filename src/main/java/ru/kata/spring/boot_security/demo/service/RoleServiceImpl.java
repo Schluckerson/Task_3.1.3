@@ -20,4 +20,6 @@ public class RoleServiceImpl implements RoleService {
     public Set<Role> findAll() {
         return new HashSet<>(roleRepository.findAll()) ;
     }
+
+
 }
