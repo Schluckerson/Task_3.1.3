@@ -2,7 +2,6 @@ package ru.kata.spring.boot_security.demo.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -22,20 +21,21 @@ public class User implements UserDetails {
     private String password;
 
 
-
     @ManyToMany()
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    public User() {}
+    public User() {
+    }
 
-    public User(String name, String lastName, String username, String password) {
+    public User(String name, String lastName, String username, String password, Set<Role> roles) {
         this.name = name;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
+        this.roles = roles;
     }
 
     public Long getId() {
