@@ -25,7 +25,7 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    public String userInfo(Principal principal, Model model) {
+    public String usersInfo(Principal principal, Model model) {
         model.addAttribute("user", userService.findByUsername(principal.getName()));
         model.addAttribute("adminPage", false);
         model.addAttribute("userPage", true);

@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin panel</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/javascript.util/0.12.12/javascript.util.min.js" integrity="sha512-oHBLR38hkpOtf4dW75gdfO7VhEKg2fsitvHZYHZjObc4BPKou2PGenyxA5ZJ8CCqWytBx5wpiSqwVEBy84b7tw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <div layout:fragment="content">
@@ -45,23 +51,7 @@
                                 <th> Delete </th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr  th:each = "user : ${users}">
-                                <td><span th:text="${user.getId()}"> Id </span></td>
-                                <td><span th:text="${user.getUsername()}"> Username </span></td>
-                                <td><span th:text="${user.getName()}"> Name </span></td>
-                                <td><span th:text="${user.getLastName()}"> LastName </span></td>
-                                <td>
-                                    <button class="btn btn-info" type="button" data-toggle="modal"
-                                            th:attr="data-target='#editUser' + ${user.getId()}">
-                                        Edit User</button>
-                                </td>
-                                <td>
-                                    <button class="btn btn-danger"
-                                            data-toggle="modal" th:attr="data-target='#deleteUser' + ${user.getId()}"
-                                            type="button">Delete</button>
-                                </td>
-                            </tr>
+                            <tbody id="mainTable">
                             </tbody>
                         </table>
                     </div>
@@ -118,7 +108,7 @@
     <!-- Modal -->
 
     <!-- Edit modal-->
-    <div class="modal fade" th:each="user : ${users}" th:id="${'editUser' + user.getId()}"
+    <div class="modal fade" id="editUser"
          tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -128,53 +118,8 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form th:method="PATCH" th:action="@{/admin/{id}(id=${user.getId()})}">
-                        <div class="row justify-content-center">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label class="h6 text-center w-100" for="editId">ID</label>
-                                    <input class="form-control" readonly="readonly" type="text"
-                                           th:value="${user.id}" id="editId">
-                                </div>
-                                <div class="form-group">
-                                    <label class="h6 text-center w-100" for="editUsername">Username</label>
-                                    <input class="form-control" name="username" type="text"
-                                           th:value="${user.username}" id="editUsername">
-                                </div>
-                                <div class="form-group">
-                                    <label class="h6 text-center w-100" for="editPassword">Password</label>
-                                    <input class="form-control" name="password" type="password"
-                                           id="editPassword">
-                                </div>
-                                <div class="form-group">
-                                    <label class="h6 text-center w-100"  for="editName">First name</label>
-                                    <input class="form-control" name="name" type="text"
-                                           th:value="${user.name}" id="editName">
-                                </div>
-                                <div class="form-group">
-                                    <label class="h6 text-center w-100" for="editLastName">Last name</label>
-                                    <input class="form-control" name="lastName" type="text"
-                                           th:value="${user.lastName}" id="editLastName">
-                                </div>
-                                <div class="form-group">
-                                    <label class="h6 text-center w-100" for="editRole">Roles</label>
-                                    <select id="editRole" class="form-control" size="2"
-                                            multiple="multiple" name="roles" th:value="${user.roles}">
-                                        <option  th:each="role : ${allRoles}"
-                                                 th:selected="${#lists.contains(user.roles, role)}"
-                                                 th:value="${role.getId()}"
-                                                 th:text="${role.getAuthority().replaceFirst('ROLE_', '')}"></option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button class="btn btn-danger btn-success" name="submit"
-                                    type="submit" value="Submit">Edit</button>
-                        </div>
-                    </form>
+                <div class="modal-body" id="editModal">
+
                 </div>
             </div>
         </div>
@@ -237,6 +182,7 @@
             </div>
         </div>
     </div>
+
 </div>
 </body>
 </html>
