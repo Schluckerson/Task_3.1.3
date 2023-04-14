@@ -8,7 +8,6 @@ import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
 import java.util.Comparator;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("data")
