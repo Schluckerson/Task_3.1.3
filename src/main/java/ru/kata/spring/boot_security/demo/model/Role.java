@@ -11,12 +11,13 @@ public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String authority;
 
-    public Role() {}
+    public Role() {
+    }
 
-    public Role(String name) {
-        this.name = name;
+    public Role(String authority) {
+        this.authority = authority;
     }
 
     public Long getId() {
@@ -29,6 +30,6 @@ public class Role implements GrantedAuthority {
 
     @Override
     public String getAuthority() {
-        return name;
+        return authority;
     }
 }

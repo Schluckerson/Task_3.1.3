@@ -6,8 +6,11 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.repository.RoleRepository;
 
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class RoleServiceImpl implements RoleService {
@@ -18,8 +21,9 @@ public class RoleServiceImpl implements RoleService {
     public RoleServiceImpl(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
     }
+
     public Set<Role> findAll() {
-        return new HashSet<>(roleRepository.findAll()) ;
+        return new HashSet<>( roleRepository.findAll());
     }
 
     @Transactional

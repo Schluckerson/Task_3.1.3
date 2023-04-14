@@ -2,12 +2,13 @@ package ru.kata.spring.boot_security.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
-import java.util.List;
-import java.util.Map;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("data")
@@ -33,13 +34,21 @@ public class RestControllers {
 
     @GetMapping("roles")
     public Object getRoles() {
-        return roleService.findAll();
+        return roleService.findAll().stream().sorted(Comparator.comparing(Role::getId));
     }
 
     @PostMapping("update/{id}")
-    public void updateUser(@PathVariable Long id, @RequestParam Map<String, String> map) {
-        for (String key: map.keySet()) {
+    public void updateUser(@PathVariable Long id, @RequestBody User user) {
+        userService.updateUser(user, id);
+    }
 
-        }
+    @DeleteMapping("/delete/{id}")
+    public void deleteUser(@PathVariable Long id) {
+        userService.deleteUserById(id);
+    }
+
+    @PutMapping("/new")
+    public void addUser(@RequestBody User user) {
+        userService.saveUser(user);
     }
 }

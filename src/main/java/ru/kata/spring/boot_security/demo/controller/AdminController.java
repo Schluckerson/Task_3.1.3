@@ -7,11 +7,12 @@ import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.service.RoleService;
-import ru.kata.spring.boot_security.demo.service.RoleServiceImpl;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
-import java.util.Map;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 public class AdminController {
@@ -25,8 +26,8 @@ public class AdminController {
     }
 
     @ModelAttribute("allRoles")
-    public Set<Role> getRoles() {
-        return roleService.findAll();
+    public List<Role> getRoles() {
+        return roleService.findAll().stream().sorted(Comparator.comparing(Role::getId)).collect(Collectors.toList());
     }
 
     @GetMapping("/admin")
@@ -35,24 +36,5 @@ public class AdminController {
         model.addAttribute("adminPage", true);
         model.addAttribute("userPage", false);
         return "admin";
-    }
-
-    @PostMapping("/admin")
-    public String saveUser(@ModelAttribute("user") User user) {
-        userService.saveUser(user);
-        return "redirect:/admin";
-    }
-
-    @PatchMapping(value = "/admin/{id}")
-    public String updateUser(@ModelAttribute("user") User user,
-                             @PathVariable("id") Long id) {
-        userService.updateUser(user, id);
-        return "redirect:/admin";
-    }
-
-    @DeleteMapping("/admin/{id}")
-    public String deleteUser(@PathVariable("id") Long id) {
-        userService.deleteUserById(id);
-        return "redirect:/admin";
     }
 }

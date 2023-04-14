@@ -14,7 +14,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public  class Initiliazer implements ApplicationRunner {
+public class Initiliazer implements ApplicationRunner {
 
     private final UserService userService;
     private final RoleService roleService;
