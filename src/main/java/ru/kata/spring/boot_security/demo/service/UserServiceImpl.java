@@ -11,6 +11,7 @@ import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.repository.UserRepository;
 
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -66,11 +67,8 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = findByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException(String.format("User '%s' not found", username));
-        }
         Hibernate.initialize(user.getAuthorities());
-        return user;
+        return Optional.of(user).orElseThrow();
     }
 
     public PasswordEncoder getEncoder() {

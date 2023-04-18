@@ -1,6 +1,8 @@
 package ru.kata.spring.boot_security.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
@@ -22,18 +24,33 @@ public class RestControllers {
     }
 
     @GetMapping("/users")
-    public Object getUsers() {
-        return userService.getAllUsers();
+    public ResponseEntity<?> getUsers() {
+        try {
+            Object users = userService.getAllUsers();
+            return new ResponseEntity<>(users, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/users/{id}")
-    public Object getUser(@PathVariable("id") Long id) {
-        return userService.getUserById(id);
+    public ResponseEntity<?> getUser(@PathVariable("id") Long id) {
+        try {
+            Object user = userService.getUserById(id);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("roles")
-    public Object getRoles() {
-        return roleService.findAll().stream().sorted(Comparator.comparing(Role::getId));
+    public ResponseEntity<?> getRoles() {
+        try {
+            Object users = roleService.findAll().stream().sorted(Comparator.comparing(Role::getId));
+            return new ResponseEntity<>(users, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping("update/{id}")

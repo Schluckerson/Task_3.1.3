@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fe11fc7-479b-4de9-905a-4e830ca217fe" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/configs/SuccessUserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/configs/SuccessUserHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/controller/RestControllers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/controller/RestControllers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/service/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/service/RoleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/service/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,10 +92,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="generated-requests | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="2" requestIdentifier="#2" runType="Run single request">
+    <configuration name="All in rest-api" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http">
       <method v="2" />
     </configuration>
     <configuration name="generated-requests | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="3" requestIdentifier="#3" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="rest-api | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" requestIdentifier="#1" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="SpringBootSecurityDemoApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -126,6 +126,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.rest-api | #1" />
+        <item itemvalue="HTTP Request.All in rest-api" />
         <item itemvalue="HTTP Request.generated-requests | #3" />
         <item itemvalue="Application.SpringBootSecurityDemoApplication" />
         <item itemvalue="JUnit.SpringBootSecurityDemoApplicationTests.contextLoads" />
@@ -152,7 +154,8 @@
       <workItem from="1681400656497" duration="772000" />
       <workItem from="1681402316655" duration="220000" />
       <workItem from="1681402559281" duration="8923000" />
-      <workItem from="1681478350848" duration="2385000" />
+      <workItem from="1681478350848" duration="6149000" />
+      <workItem from="1681846060402" duration="1206000" />
     </task>
     <servers />
   </component>
@@ -175,7 +178,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ru/kata/spring/boot_security/demo/controller/RestControllers.java</url>
-          <line>45</line>
+          <line>62</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
